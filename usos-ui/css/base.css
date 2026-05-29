@@ -1,0 +1,855 @@
+@charset "UTF-8";
+@import url(fonts/roboto/roboto.css);
+@import url(fonts/material-icons/material-icons.css);
+.sr-only, .screen-reader-only {
+  position: absolute;
+  top: -1000rem;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+}
+.sr-only::before, .sr-only::after, .screen-reader-only::before, .screen-reader-only::after {
+  content: " ";
+}
+
+.usos-ui :is(input[type=submit], input[type=button], input[type=reset], button) {
+  font-family: inherit;
+}
+.usos-ui :is(input[type=submit], input[type=button], input[type=reset], button):focus-visible {
+  outline: 1px solid currentColor;
+  outline-offset: 2px;
+}
+.usos-ui :is(input[type=submit], input[type=button], input[type=reset], button):is(.positive, .negative, .neutral) {
+  padding: 0.25rem 1.5rem;
+  font-size: 0.875em;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1.5;
+  border-radius: 2px;
+  border: none;
+  margin: 0 2px;
+  min-height: 34px;
+  display: inline-block;
+  color: white;
+  outline-width: 2px;
+  outline-offset: 4px;
+}
+.usos-ui :is(input[type=submit], input[type=button], input[type=reset], button):is(.positive, .negative, .neutral) > usos-icon {
+  font-size: 1rem;
+  margin-left: -0.5rem;
+  margin-right: 0.5rem;
+}
+.usos-ui :is(input[type=submit], input[type=button], input[type=reset], button):is(.positive, .negative, .neutral):not(:disabled) {
+  cursor: pointer;
+}
+.usos-ui :is(input[type=submit], input[type=button], input[type=reset], button):is(.positive, .negative, .neutral):not(:disabled):active {
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1490196078);
+}
+.usos-ui :is(input[type=submit], input[type=button], input[type=reset], button):is(.positive, .negative, .neutral):not(:disabled):is(:hover, :focus) {
+  text-decoration: underline;
+}
+.usos-ui :is(input[type=submit], input[type=button], input[type=reset], button):is(.positive, .negative, .neutral):disabled {
+  cursor: not-allowed;
+}
+.usos-ui :is(input[type=submit], input[type=button], input[type=reset], button):is(.positive, .negative, .neutral):not(.outlined).neutral {
+  background-color: #30538A;
+  outline-color: #30538A;
+}
+.usos-ui :is(input[type=submit], input[type=button], input[type=reset], button):is(.positive, .negative, .neutral):not(.outlined).neutral:disabled {
+  background-color: rgba(48, 83, 138, 0.85);
+  color: rgba(255, 255, 255, 0.9);
+}
+.usos-ui :is(input[type=submit], input[type=button], input[type=reset], button):is(.positive, .negative, .neutral):not(.outlined).positive {
+  background-color: #0C5C40;
+  outline-color: #0C5C40;
+}
+.usos-ui :is(input[type=submit], input[type=button], input[type=reset], button):is(.positive, .negative, .neutral):not(.outlined).positive:disabled {
+  background-color: rgba(12, 92, 64, 0.85);
+  color: rgba(255, 255, 255, 0.9);
+}
+.usos-ui :is(input[type=submit], input[type=button], input[type=reset], button):is(.positive, .negative, .neutral):not(.outlined).negative {
+  background-color: #A23737;
+  outline-color: #A23737;
+}
+.usos-ui :is(input[type=submit], input[type=button], input[type=reset], button):is(.positive, .negative, .neutral):not(.outlined).negative:disabled {
+  background-color: rgba(162, 55, 55, 0.85);
+  color: rgba(255, 255, 255, 0.9);
+}
+.usos-ui :is(input[type=submit], input[type=button], input[type=reset], button):is(.positive, .negative, .neutral).outlined {
+  font-weight: 600;
+  background: var(--background);
+  border-radius: 2px;
+  border: 2px solid currentColor;
+  outline-color: currentColor;
+}
+.usos-ui :is(input[type=submit], input[type=button], input[type=reset], button):is(.positive, .negative, .neutral).outlined:disabled {
+  background-color: #CFCFCF;
+  text-decoration: line-through;
+  font-weight: normal;
+}
+.usos-ui :is(input[type=submit], input[type=button], input[type=reset], button):is(.positive, .negative, .neutral).outlined.neutral {
+  color: #30538A;
+}
+.usos-ui :is(input[type=submit], input[type=button], input[type=reset], button):is(.positive, .negative, .neutral).outlined.neutral:focus-within {
+  background: rgb(229.5, 239.4166666667, 255);
+}
+.usos-ui :is(input[type=submit], input[type=button], input[type=reset], button):is(.positive, .negative, .neutral).outlined.positive {
+  color: #0C5C40;
+}
+.usos-ui :is(input[type=submit], input[type=button], input[type=reset], button):is(.positive, .negative, .neutral).outlined.positive:focus-within {
+  background: rgb(229.5, 255, 246.075);
+}
+.usos-ui :is(input[type=submit], input[type=button], input[type=reset], button):is(.positive, .negative, .neutral).outlined.negative {
+  color: #A23737;
+}
+.usos-ui :is(input[type=submit], input[type=button], input[type=reset], button):is(.positive, .negative, .neutral).outlined.negative:focus-within {
+  background: rgb(255, 229.5, 229.5);
+}
+
+:root {
+  --font-color: #06022E;
+  --primary: #4F4C6A;
+  --on-primary: #FFFFFF;
+  --secondary: #FBB040;
+  --secondary-variant: #AD4200;
+  --background: #FFFFFF;
+  --on-background: var(--font-color);
+  --background-secondary: #EFEFF1;
+  --on-background-secondary: var(--font-color);
+  --grey: #4D4D4D;
+  --border: #DADADE;
+  --ok-status: #438600;
+  --error: #963030;
+  --warning: #9B6600;
+  --accent-red: #A23737;
+  --accent-blue: #30538A;
+  --accent-green: #0C5C40;
+  --accent-violet: #673A78;
+  --accent-context: var(--accent-blue);
+  /* backward compat */
+  --accent1: var(--accent-red);
+  --accent2: var(--accent-blue);
+  --accent3: var(--accent-green);
+  --accent4: var(--accent-violet);
+}
+
+.usos-ui h1 {
+  color: var(--font-color);
+  font-size: 1.375rem;
+  text-align: left;
+  font-weight: 500;
+  line-height: 1.15;
+  margin: 0 0 1.5rem 0;
+}
+.usos-ui h1 .block {
+  display: block;
+}
+.usos-ui h1 .note {
+  color: inherit;
+  font-size: 1.125rem;
+}
+.usos-ui h2 {
+  color: var(--font-color);
+  font-size: 1.375rem;
+  text-align: left;
+  font-weight: normal;
+  line-height: 1.15;
+  margin: 2rem 0 0.75rem 0;
+}
+
+usos-frame [slot=title], usos-frame [slot=title] a {
+  color: inherit !important;
+}
+usos-frame [slot=title]:is(a), usos-frame [slot=title] a {
+  text-decoration: underline;
+}
+usos-frame [slot=title]:is(h1, h2, h3) {
+  color: inherit;
+  margin: 0;
+  font-size: inherit;
+  font-weight: inherit;
+  text-align: left;
+}
+
+usos-dialog [slot=title]:is(h2, h3, h4) {
+  color: inherit;
+  margin: 0;
+  font-size: inherit;
+  font-weight: inherit;
+  text-align: left;
+}
+
+/* radio button */
+input[type=radio] {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  color: inherit; /* normalize because of chrome */
+  font-size: 1em; /* normalize because of inheritance bug(?) */
+  position: relative;
+  top: 0.125em;
+}
+input[type=radio]:disabled + label, label > input[type=radio]:disabled ~ * {
+  color: #AAAAAA;
+}
+input[type=radio]:disabled::after {
+  background-color: #AAAAAA;
+}
+input[type=radio]::after {
+  display: block;
+  content: ".";
+  background-color: var(--primary);
+  -webkit-mask-image: url(../assets/radio/radio_not_checked.svg);
+  -webkit-mask-size: contain;
+  mask-image: url(../assets/radio/radio_not_checked.svg);
+  mask-size: contain;
+  width: 1em;
+  height: 1em;
+}
+input[type=radio]:checked::after {
+  -webkit-mask-image: url(../assets/radio/radio_checked.svg);
+  mask-image: url(../assets/radio/radio_checked.svg);
+}
+
+/* checkbox */
+input[type=checkbox] {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  width: 1.25em;
+  height: 1.25em;
+  color: inherit; /* normalize because of chrome */
+  font-size: 1em; /* normalize because of inheritance bug(?) */
+}
+input[type=checkbox]:disabled + label, label > input[type=checkbox]:disabled ~ * {
+  color: #AAAAAA;
+}
+input[type=checkbox]:disabled::after {
+  background-color: #AAAAAA;
+}
+input[type=checkbox]::after {
+  display: block;
+  content: ".";
+  background-color: currentColor;
+  -webkit-mask-image: url(../assets/checkbox/checkbox-not-checked.svg);
+  -webkit-mask-size: contain;
+  mask-image: url(../assets/checkbox/checkbox-not-checked.svg);
+  mask-size: contain;
+  width: 1.25em;
+  height: 1.25em;
+}
+input[type=checkbox]:checked::after {
+  -webkit-mask-image: url(../assets/checkbox/checkbox-checked.svg);
+  mask-image: url(../assets/checkbox/checkbox-checked.svg);
+}
+
+.usos-ui .keyvalue-list > div > div {
+  padding: 5px 8px;
+}
+.usos-ui dl.keyvalue-list > :is(dt, dd) {
+  padding: 5px 0;
+}
+.usos-ui dl.keyvalue-list > dd {
+  margin-left: 1.5rem;
+}
+.usos-ui .keyvalue-list > div > div:first-child, .usos-ui dl.keyvalue-list > dt {
+  font-weight: 500;
+}
+.usos-ui .inline-keyvalue-list > div {
+  padding: max(var(--inline-kvlist-spacing, 0.25rem), 0.125rem) 0;
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 0.5rem;
+  align-items: baseline;
+}
+.usos-ui .inline-keyvalue-list > div > div:first-child {
+  font-weight: 500;
+}
+.usos-ui usos-frame > .inline-keyvalue-list.context-list {
+  border-left: 4px solid var(--accent-context);
+  margin: 0;
+  padding: 0.5rem 1rem;
+  border-radius: 2px;
+}
+.usos-ui dl.inline-keyvalue-list {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+.usos-ui dl.inline-keyvalue-list > dt {
+  grid-column: 1;
+  font-weight: 500;
+}
+.usos-ui dl.inline-keyvalue-list > dd {
+  margin: 0;
+  grid-column: 2;
+}
+
+usos-frame > kv-list, usos-frame-section > kv-list {
+  margin: 0;
+  padding: 0;
+}
+
+kv-list > dl, kv-list > usos-frame-section > dl {
+  margin: 0 1rem;
+  padding: 0;
+  --padding: max(var(--kv-list-spacing, 0.5rem), 0.25rem);
+}
+kv-list > dl > *, kv-list > usos-frame-section > dl > * {
+  padding-top: var(--padding);
+  padding-bottom: var(--padding);
+}
+kv-list > dl > dt, kv-list > usos-frame-section > dl > dt {
+  grid-column: 1;
+  margin: 0;
+  font-weight: 600;
+  padding-right: 1rem;
+}
+kv-list > dl > dd, kv-list > usos-frame-section > dl > dd {
+  margin: 0;
+  grid-column: 2/-1;
+}
+kv-list > dl > dt:not(:first-of-type), kv-list > usos-frame-section > dl > dt:not(:first-of-type) {
+  border-top: 1px solid var(--border);
+}
+kv-list > dl > dt:not(:first-of-type) + dd, kv-list > usos-frame-section > dl > dt:not(:first-of-type) + dd {
+  border-top: 1px solid var(--border);
+}
+
+@supports (grid-template-columns: subgrid) {
+  /* With subgrid support we can align both dl and dd's children
+     to the same column structure defined in kv-list container. */
+  kv-list > dl, kv-list > usos-frame-section > dl {
+    grid-column: 1/-1;
+    display: grid;
+    grid-template-columns: subgrid;
+  }
+  kv-list > dl > dd, kv-list > usos-frame-section > dl > dd {
+    display: grid;
+    grid-template-columns: subgrid;
+  }
+  kv-list > dl > dd > .action, kv-list > usos-frame-section > dl > dd > .action {
+    padding-left: 0.5rem;
+    grid-column: 2;
+  }
+  kv-list > dl > dd > :not(.action), kv-list > usos-frame-section > dl > dd > :not(.action) {
+    grid-column: 1;
+  }
+}
+@supports not (grid-template-columns: subgrid) {
+  /* Without subgrid we cannot inherit the column structure, so we must
+   * duplicate the grid definition on the dl and then approximate
+   * the two‑column layout inside dd using flexbox layout. */
+  kv-list > dl, kv-list > usos-frame-section > dl {
+    grid-column: 1/-1;
+    display: grid;
+    grid-template-columns: var(--kv-grid-first-column) 1fr;
+  }
+  kv-list > dl > dd, kv-list > usos-frame-section > dl > dd {
+    display: flex;
+    flex-flow: row nowrap;
+  }
+  kv-list > dl > dd > .action, kv-list > usos-frame-section > dl > dd > .action {
+    padding-left: 0.5rem;
+    margin-left: auto;
+    flex-grow: 0;
+    order: 1013;
+  }
+}
+kv-list.move-actions dd > .action > usos-icon[is-button],
+kv-list.move-actions dd > .action usos-link:not([bordered]):not([inline]) {
+  margin-top: -8px;
+  margin-bottom: 8px;
+}
+kv-list.move-actions dd > .action usos-link:not([bordered]):not([inline]) {
+  display: flex;
+  --margin: max(calc((34px - 1lh)/2), 0px);
+  margin-top: calc(0px - var(--margin));
+  margin-bottom: var(--margin);
+}
+
+kv-list.pad-actions dd > .action > usos-icon[is-button],
+kv-list.pad-actions dd > .action > usos-link:not([bordered]):not([inline]) {
+  margin-top: -8px;
+  margin-bottom: -8px;
+}
+kv-list.pad-actions {
+  --kv-list-spacing: calc(0.25rem + 8px);
+}
+
+.usos-ui a {
+  color: inherit;
+}
+.usos-ui a, .usos-ui a:visited, .usos-ui a:active {
+  cursor: pointer;
+  text-decoration: none;
+}
+.usos-ui a:hover {
+  text-decoration: underline;
+}
+
+.usos-ui article {
+  line-height: 1.5;
+}
+.usos-ui article a {
+  color: var(--link-color, var(--accent-blue));
+  cursor: pointer;
+  text-decoration: 2px underline !important;
+}
+.usos-ui article a:visited, .usos-ui article a:active {
+  color: var(--link-color-visited, var(--accent-violet));
+}
+.usos-ui article usos-link[bordered] a {
+  color: inherit;
+}
+
+.usos-ui em {
+  color: var(--secondary-variant);
+  font-style: normal;
+}
+
+/*! normalize.css v3.0.2 | MIT License | git.io/normalize */
+/* Forms
+   ========================================================================== */
+/**
+ * Known limitation: by default, Chrome and Safari on OS X allow very limited
+ * styling of `select`, unless a `border` property is set.
+ */
+/**
+ * 1. Correct color not being inherited.
+ *    Known issue: affects color of disabled elements.
+ * 2. Correct font properties not being inherited.
+ * 3. Address margins set differently in Firefox 4+, Safari, and Chrome.
+ */
+button,
+input,
+optgroup,
+select,
+textarea {
+  color: inherit; /* 1 */
+  font: inherit; /* 2 */
+  margin: 0; /* 3 */
+}
+
+.usos-ui table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+.usos-ui table > * > tr > :is(td, th) {
+  padding: 0.3125rem 0.5rem;
+  text-align: start;
+  vertical-align: middle;
+}
+.usos-ui table:not([role=presentation]) > * > tr > :is(td, th) {
+  border: 1px solid var(--border);
+}
+.usos-ui table:not([role=presentation]) thead > tr > th {
+  background: var(--primary);
+  color: var(--on-primary);
+  border-color: var(--on-primary);
+  font-weight: 500;
+}
+.usos-ui table:not([role=presentation]) thead > tr > td {
+  background-color: var(--background-secondary);
+}
+.usos-ui table:not([role=presentation]) tbody > tr:nth-child(2n+1) > td {
+  background: #F8F8F8;
+}
+.usos-ui table:not([role=presentation]) tbody > tr:nth-child(2n) > td {
+  background: var(--background);
+}
+.usos-ui table:not([role=presentation]) tbody {
+  /** odd/even class instead of automatic */
+}
+.usos-ui table:not([role=presentation]) tbody > tr.odd > td {
+  background: #F8F8f8;
+}
+.usos-ui table:not([role=presentation]) tbody > tr.even > td {
+  background: var(--background);
+}
+.usos-ui table:not([role=presentation]) tfoot > tr > td {
+  background-color: var(--background-secondary);
+}
+.usos-ui .dynamic-table > table-nav-bar {
+  background-color: var(--background-secondary);
+  border: 1px solid var(--border);
+}
+.usos-ui .dynamic-table > dynamic-area, .usos-ui .dynamic-table table {
+  width: -webkit-fill-available;
+  width: -moz-available;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+.font-medium {
+  font-weight: 500;
+}
+
+.font-default {
+  font-weight: normal;
+}
+
+.align-left {
+  text-align: left;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.align-center {
+  text-align: center;
+}
+
+.align-start {
+  text-align: start;
+}
+
+.align-end {
+  text-align: end;
+}
+
+.align-top {
+  vertical-align: top;
+}
+
+.align-bottom {
+  vertical-align: bottom;
+}
+
+.align-middle {
+  vertical-align: middle;
+}
+
+.align-baseline {
+  vertical-align: baseline;
+}
+
+.status-error {
+  color: var(--error);
+}
+
+.status-warn {
+  color: var(--warning);
+}
+
+.status-ok {
+  color: var(--ok-status);
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+  flex-flow: row wrap;
+  gap: 1rem;
+}
+.flex-wrap {
+  flex-wrap: wrap;
+}
+.flex-nowrap {
+  flex-wrap: nowrap;
+}
+.flex-row {
+  flex-direction: row;
+}
+.flex-column {
+  flex-direction: column;
+}
+.flex-start {
+  align-items: start;
+}
+.flex-end {
+  align-items: end;
+}
+.flex-center {
+  align-items: center;
+}
+.flex-baseline {
+  align-items: baseline;
+}
+.flex > .stretch {
+  flex-basis: 0;
+  flex-grow: 1;
+}
+.flex > .stretch > * {
+  width: -moz-available;
+  width: -webkit-fill-available;
+  width: stretch;
+}
+
+.grid-2cols {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1rem;
+}
+
+.gap-s {
+  gap: 0.5rem;
+}
+
+.spacing-s > :not(:last-child) {
+  margin-bottom: 0.5rem;
+}
+
+.gap-m {
+  gap: 1rem;
+}
+
+.spacing-m > :not(:last-child) {
+  margin-bottom: 1rem;
+}
+
+.gap-l {
+  gap: 1.5rem;
+}
+
+.spacing-l > :not(:last-child) {
+  margin-bottom: 1.5rem;
+}
+
+.gap-xl {
+  gap: 2rem;
+}
+
+.spacing-xl > :not(:last-child) {
+  margin-bottom: 2rem;
+}
+
+:root {
+  --module-link-tile-text-content-line-height: 1;
+}
+
+body {
+  font-family: Roboto;
+  font-size: 0.9375rem;
+  line-height: 1.3;
+  color: var(--font-color);
+  margin: 0;
+  padding: 0;
+  background: url(../assets/page_background.png) repeat fixed;
+  scrollbar-gutter: stable;
+  overflow: auto;
+}
+
+:focus {
+  outline: 1px solid currentColor;
+  outline-offset: 2px;
+}
+
+:focus-visible {
+  outline: 1px solid currentColor;
+  outline-offset: 2px;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+cas-bar {
+  font-size: 0.75rem;
+}
+
+menu-top:focus, menu-left:focus, [slot=pageBody]:focus {
+  outline: none;
+}
+
+/* topMenu */
+menu-top-item:focus {
+  outline-offset: -8px;
+}
+
+/* leftMenu */
+menu-left ul, menu-left li {
+  margin: 0;
+  padding: 0;
+  list-style: outside none none;
+}
+
+menu-left a:focus {
+  outline-offset: 0;
+}
+
+menu-left > ul > li {
+  margin: 25px 0 0 0;
+}
+
+menu-left > ul > li li {
+  margin: 0 0 0 0;
+}
+
+menu-left > ul > li li li {
+  margin: 0 0 0 11px;
+}
+
+menu-left > ul > li > :is(a, span) {
+  background: none !important;
+  padding: 0;
+  text-transform: uppercase;
+}
+
+menu-left li :is(a, span) {
+  display: inline-block;
+  padding: 0 0 0 1.25rem;
+  color: var(--font-color);
+  text-decoration: none;
+  text-transform: lowercase;
+  outline: none;
+}
+
+menu-left li li :is(a, span) {
+  background: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0ndXRmLTgnPz48c3ZnIHZlcnNpb249JzEuMScgeG1sbnM9J2h0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnJyB4PScwcHgnIHk9JzBweCcgd2lkdGg9JzIwcHgnIGhlaWdodD0nMjBweCcgdmlld0JveD0nMCAwIDIwIDIwJz48cGF0aCBmaWxsPScjQTYyOTI5JyBkPSdNMTAuOTQ4LDE1LjAzNUwxMC45NDgsMTUuMDM1Yy0wLjMwMy0wLjMwMi0wLjMwMy0wLjc5MS0wLjAwMi0xLjA5NGMwLjAwMSwwLDAuMDAyLTAuMDAxLDAuMDAyLTAuMDAxbDMtMy4wMjFINC4wODRjLTAuNDI4LTAuMDAyLTAuNzc0LTAuMzQ4LTAuNzc2LTAuNzc2bDAsMEMzLjMxLDkuNzE1LDMuNjU3LDkuMzcsNC4wODQsOS4zNjhoOS44NjRsLTMuMDEtMy4wMTRjLTAuMzAzLTAuMzAyLTAuMzAzLTAuNzkxLTAuMDAyLTEuMDk0YzAuMDAxLTAuMDAxLDAuMDAyLTAuMDAxLDAuMDAyLTAuMDAybDAsMGMwLjMwMS0wLjMwMiwwLjc5MS0wLjMwMywxLjA5NC0wLjAwMmMwLDAuMDAxLDAuMDAxLDAuMDAyLDAuMDAyLDAuMDAybDQuMzQ4LDQuMzRjMC4zMDMsMC4zMDIsMC4zMDMsMC43OTEsMC4wMDIsMS4wOTRjLTAuMDAxLDAtMC4wMDIsMC4wMDEtMC4wMDIsMC4wMDJsLTQuMzQsNC4zNEMxMS43MzcsMTUuMzI4LDExLjI1NCwxNS4zMjgsMTAuOTQ4LDE1LjAzNXonLz48L3N2Zz4=") no-repeat 0 0;
+  margin-left: 0.5rem;
+  background-size: 1rem;
+}
+
+menu-left li li li :is(a, span) {
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScyMCcgaGVpZ2h0PScyMCc+PGNpcmNsZSBjeD0nMTAnIGN5PScxMCcgcj0nMycgc3Ryb2tlLXdpZHRoPScwJyBmaWxsPSdyZ2JhKDE2Niw0MSw0MSknPjwvY2lyY2xlPjwvc3ZnPg==");
+}
+
+menu-left li :is(a, span).dynamic {
+  text-transform: none;
+}
+
+menu-left li a:visited, menu-left li a:active {
+  color: var(--font-color);
+}
+
+menu-left li a:hover, menu-left li a:focus {
+  color: var(--font-color);
+  text-decoration: underline;
+}
+
+menu-left li :is(a, span).selected {
+  font-weight: bold;
+}
+
+menu-left li :is(a, span).disabled {
+  color: #888888;
+}
+
+/** footers */
+usos-footer > #footer-logo img {
+  height: 5rem;
+}
+
+/* icons */
+span.icon-inline {
+  font-size: inherit;
+}
+
+span.icon-clickable {
+  font-size: 24px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+span.icons-hide-underline {
+  margin-top: -1px;
+  margin-bottom: -1px;
+  overflow: hidden;
+}
+
+/* usos-frame */
+usos-frame > .hide-borders {
+  margin: 0;
+  padding: 0;
+}
+
+usos-frame > .hide-borders > * {
+  width: calc(100% + 2px);
+  margin: -1px -1px;
+}
+
+/** lists */
+ul.no-bullets {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+ul.inlined-list > li {
+  display: inline;
+}
+
+ul.inlined-list > li:not(:last-child)::after {
+  display: inline-block;
+  content: ", ";
+}
+
+ul.inlined-list.pipe-separated > li:not(:last-child)::after {
+  content: " | ";
+}
+
+ul.inlined-list.semicolon-separated > li:not(:last-child)::after {
+  content: "; ";
+}
+
+ul.separated > li {
+  padding: 1rem;
+}
+
+ul.separated > li:not(:last-child) {
+  border-bottom: 1px solid var(--border);
+}
+
+ul.separated > li > :first-child {
+  margin-top: 0;
+}
+
+ul.separated > li > :last-child {
+  margin-bottom: 0;
+}
+
+/** tables */
+.autoscroll {
+  overflow-x: auto;
+  padding: 1px;
+  margin-bottom: 1.2rem;
+  position: relative;
+}
+
+.autoscroll > * {
+  margin-bottom: 0.25rem;
+}
+
+/** usos-timetable configuration to center day headers */
+usos-timetable > * > :first-child {
+  max-width: calc(880px - var(--timetable-hours-width));
+  position: sticky;
+  left: 0;
+}
+
+@media screen and (max-width: 1200px) {
+  usos-timetable > * > :first-child {
+    max-width: calc(80vw - 80px - var(--timetable-hours-width));
+    min-width: fit-content;
+  }
+  main-panel[left-menu-hidden] usos-timetable > * > :first-child {
+    max-width: calc(100vw - 80px - var(--timetable-hours-width));
+  }
+}
+usos-layout[expanded] usos-timetable > * > :first-child {
+  max-width: calc(80vw - 80px - var(--timetable-hours-width));
+}
+
+usos-layout[expanded] main-panel[left-menu-hidden] usos-timetable > * > :first-child {
+  max-width: calc(100vw - 80px - var(--timetable-hours-width));
+}
+
+usos-timetable > * > :first-child > * { /* consistent header with empty hours header */
+  font-weight: 500;
+  margin: 0.5rem 0;
+  font-size: 0.925rem;
+  text-align: center;
+  line-height: inherit;
+}
+
+usos-timetable[mini] > * > :first-child > * {
+  margin: 2px 0;
+  font-size: 0.5rem;
+}
+:is(app-header,attachments-panel,buttons-panel,cas-bar,cas-lang,dynamic-area,error-box,footer-panel,footer-row,help-dialog,info-box,kv-list,local-time,main-panel,menu-left,menu-top,menu-top-hamburger,menu-top-item,notice-box,select-field,select-field-option,skip-links,success-box,tab-layout,table-nav-bar,text-field,timetable-day,timetable-entry,top-scroller,usos-banner,usos-copyright,usos-dialog,usos-flow,usos-flow-step,usos-footer,usos-frame,usos-frame-section,usos-icon,usos-layout,usos-link,usos-module-link-tile,usos-module-link-tile-container,usos-progress,usos-selector,usos-spinner,usos-tag,usos-timetable,usos-tooltip):not(:defined) {display:none;}

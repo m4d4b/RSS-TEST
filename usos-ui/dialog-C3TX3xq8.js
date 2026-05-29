@@ -1,0 +1,2 @@
+let e;function o(t){if(t){const n=document.createElement("span");n.slot="title",n.textContent=t,e?.appendChild(n)}}async function a(t,n){if(e===void 0&&(e=document.createElement("usos-dialog"),document.body.appendChild(e)),!e.hasUpdated)for(;!await e.updateComplete;);return typeof t=="string"?(e.dynamic=!0,e.url=t,e.open(),new Promise(d=>{e.addEventListener("dialog:urlLoaded",()=>{o(n),d(e)},{once:!0})})):(e.dynamic=!1,e.innerHTML="",e.appendChild(t),o(n),e.open(),e)}export{a as openDialog};
+//# sourceMappingURL=dialog-C3TX3xq8.js.map
